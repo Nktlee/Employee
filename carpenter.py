@@ -1,8 +1,7 @@
 from employee import Employee
 
 class Carpenter(Employee):
-    def __init__(self, employee_number = 123, shift_number = 1, hourly_wage = 1000):
-        super().__init__(employee_number)
+    def __init__(self, shift_number = 1, hourly_wage = 1000):
         self.__shift_number = shift_number
         self.__hourly_wage = hourly_wage
     
@@ -19,10 +18,10 @@ class Carpenter(Employee):
                 self.__shift_number = shift_number
             else:
                 print('Ошибка: введите номер смены (1 - дневная, 2 - ночная)')
-                self.set_shift_number(input('Введите номер смены '))
+                self.set_shift_number(input('Введите номер смены (1 - дневная, 2 - ночная) '))
         except ValueError:
             print('Ошибка: введите целое число ')
-            self.set_shift_number(input('Введите номер смены '))
+            self.set_shift_number(input('Введите номер смены (1 - дневная, 2 - ночная) '))
 
     def get_hourly_wage(self):
         return self.__hourly_wage

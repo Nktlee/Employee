@@ -1,17 +1,17 @@
 class Product:
-    def __init__(self, name = 'name', width = 1, length = 1, height = 1, weight = 1, coefficient = 1):
-        self.__name = name
+    def __init__(self, title = 'title', width = 1, length = 1, height = 1, weight = 1, coefficient = 1):
+        self.__title = title
         self.__width = width
         self.__length = length
         self.__height = height
         self.__weight = weight
         self.__coefficient = coefficient
 
-    def get_name(self):
-        return self.__name
+    def get_title(self):
+        return self.__title
     
-    def set_name(self, name):
-        self.__name = name
+    def set_title(self, title):
+        self.__title = title
     
     def get_width(self):
         return self.__width

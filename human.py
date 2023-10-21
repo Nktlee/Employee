@@ -28,7 +28,7 @@ class Human:
     
     def set_phone_number(self, phone_number):
         try:
-            int(phone_number)
+            phone_number = int(phone_number)
             self.__phone_number = phone_number
         except ValueError:
             print('Ошибка: введите целое число')

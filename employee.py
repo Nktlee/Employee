@@ -1,8 +1,8 @@
 from human import Human
+from product import Product
 
 class Employee(Human):
-    def __init__(self, name = 'name', surname = 'surname', address = 'address', phone_number = 1, employee_number = 123, qualification = 'worker'):
-        super().__init__(name, surname, address, phone_number)
+    def __init__(self, employee_number = 123, qualification = 'worker'):
         self.__employee_number = employee_number
         self.__qualification = qualification
 
@@ -19,19 +19,20 @@ class Employee(Human):
     
     def get_qualification(self):
         return self.__qualification
-    
+
     def set_qualification(self, qualification):
         try:
             qualification = int(qualification)
-            if qualification == 1:
-                self.__qualification = "новичок"
-            elif qualification == 2:
-                self.__qualification = "средний работник"
-            elif qualification == 3:
-                self.__qualification = "профессионал"
+            qualification_dict = {1 : "новичок", 2 : "средний работник", 3 : "профессионал"}
+            if qualification in qualification_dict:
+                self.__qualification = qualification_dict[qualification]
             else:
-                print('Ошибка: введите уровень квалификации (1 - новичек, 2 - средний работник, 3 - профессионал)')
-                self.set_qualification(input('Введите уровень квалификации '))
+                raise ValueError
         except ValueError:
-            print('Ошибка: введите целое число')
-            self.set_qualification(input('Введите уровень квалификации '))
+            print('Ошибка: введите уровень квалификации (1 - новичек, 2 - средний работник, 3 - профессионал)')
+            self.set_qualification(input('Введите уровень квалификации (1 - новичек, 2 - средний работник, 3 - профессионал) '))
+
+    def create_product(self, product: Product, human: Human):
+        qualification_dict = {"новичок" : 1, "средний работник" : 2, "профессионал" : 3}
+        time = product.get_coefficient() * 30 / qualification_dict[self.get_qualification()]
+        print(f'{human.get_name()} создаст продукт {product.get_title()} за {time} минут')
